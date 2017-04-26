@@ -1,0 +1,13 @@
+# ignore precompiled python files
+*.pyc
+
+# ignore editor leftovers
+*~
+.*.sw*
+
+# ignore downloaded apps
+*.apk
+
+.idea
+
+.bak
