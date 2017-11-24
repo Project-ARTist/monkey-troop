@@ -1,4 +1,4 @@
-# Monkey Troop - Readme
+# Monkey Troop - Readme [![Gitter](https://badges.gitter.im/Project-ARTist/meta.svg)](https://gitter.im/project-artist/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
 Monkey Troop is a python program for the evaluation of ARTist Modules and ARTist itself. It executes custom evaluations on multiple connected devices, stores reports and computes results. Evaluations can be resumed after stopping the script.   
 
