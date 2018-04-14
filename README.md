@@ -1,8 +1,12 @@
-# Monkey Troop - Readme [![Gitter](https://badges.gitter.im/Project-ARTist/meta.svg)](https://gitter.im/project-artist/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
+# Monkey Troop - ARTist's evaluation tool
 
-Monkey Troop is a python program for the evaluation of ARTist Modules and ARTist itself. It executes custom evaluations on multiple connected devices, stores reports and computes results. Evaluations can be resumed after stopping the script.   
+[![Gitter](https://badges.gitter.im/Project-ARTist/monkey-troop.svg)](https://gitter.im/project-artist/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
+
+Monkey Troop is a python program for the evaluation of [ARTist](https://github.com/Project-ARTist/ARTist) modules and ARTist itself. It executes custom evaluations on multiple connected devices, stores reports and computes results. Evaluations can be resumed after stopping the script.   
 
 A microservice architecture is used where we spawn a new worker process for each device and a central reporter process that collects the results and writes reports. 
+
+This project is part of the ARTist ecosystem. For more information, check out the corresponding section below. 
 
 ## Installation
 
@@ -19,6 +23,8 @@ After checking out the repository, the structure looks like follows:
 **lists/**  
 **scripts/**  
 
+
+
 ### code/
 The root folder for all evaluation-related source files. 
 ### lists/
@@ -27,8 +33,8 @@ line, new lists can be added at will.
 ### scripts/
 Contains scripts that simplify the evaluation process. The main script, ```evaluate.sh ```, contains the basic invocation 
 of the Monkey Troop python tool. However, as different evaluations require different input, there should be another script 
-for each evaluation. For example, the trace-logging evaluation uses the ```evaluate_trace.sh ```script that invokes 
-```evaluate.sh```with additional arguments. While some arguments are common to all evaluations, concrete evaluations may 
+for each evaluation. For example, the trace-logging evaluation uses the ```evaluate_trace.sh ``` script that invokes 
+```evaluate.sh``` with additional arguments. While some arguments are common to all evaluations, concrete evaluations may 
 require additional ones. 
 
 ## Usage
@@ -134,3 +140,37 @@ configuration. First copy ```code/repositories/gplay/googleplay_api/googleplay_a
 ```code/repositories/gplay/googleplay_api/googleplay_api/config.py```. Then fill the missing entries with valid 
 credentials. If you are unsure about how they might look like, you can check the history of above mentioned GitHub 
 project. 
+
+
+# ARTist - The Android Runtime Instrumentation and Security Toolkit
+
+ARTist is a flexible open source instrumentation framework for Android's apps and Java middleware. It is based on the Android Runtime’s (ART) compiler and modifies code during on-device compilation. In contrast to existing instrumentation frameworks, it preserves the application's original signature and operates on the instruction level. 
+
+ARTist can be deployed in two different ways: First, as a regular application using our [ArtistGui](https://github.com/Project-ARTist/ArtistGui) project that allows for non-invasive app instrumentation on rooted devices, or second, as a system compiler for custom ROMs where it can additionally instrument the system server (Package Manager Service, Activity Manager Service, ...) and the Android framework classes (```boot.oat```). It supports Android versions after (and including) Marshmallow 6.0. 
+
+For detailed tutorials and more in-depth information on the ARTist ecosystem, have a look at our [official documentation](https://artist.cispa.saarland) and join our [Gitter chat](https://gitter.im/project-artist/Lobby).
+
+## Upcoming Beta Release
+
+We are about to enter the beta phase soon, which will bring a lot of changes to the whole ARTist ecosystem, including a dedicated ARTist SDK for simplified Module development, a semantic versioning-inspired release and versioning scheme, an improved and updated version of our online documentation, great new Modules, and a lot more improvements. However, in particular during the transition phase, some information like the one in the repositories' README.md files and the documentation at [https://artist.cispa.saarland](https://artist.cispa.saarland) might be slightly out of sync. We apologize for the inconvenience and happily take feedback at [Gitter](https://gitter.im/project-artist/Lobby). To keep up with the current progress, keep an eye on the beta milestones of the Project: ARTist repositories and check for new blog posts at [https://artist.cispa.saarland](https://artist.cispa.saarland) . 
+
+## Contribution
+
+We hope to create an active community of developers, researchers and users around Project ARTist and hence are happy about contributions and feedback of any kind. There are plenty of ways to get involved and help the project, such as testing and writing Modules, providing feedback on which functionality is key or missing, reporting bugs and other issues, or in general talk about your experiences. The team is actively monitoring [Gitter](https://gitter.im/project-artist/) and of course the repositories, and we are happy to get in touch and discuss. We do not have a full-fledged contribution guide, yet, but it will follow soon (see beta announcement above). 
+
+## Academia
+
+ARTist is based on a paper called **ARTist - The Android Runtime Instrumentation and Security Toolkit**, published at the 2nd IEEE European Symposium on Security and Privacy (EuroS&P'17). The full paper is available [here](https://artist.cispa.saarland/res/papers/ARTist.pdf). If you are citing ARTist in your research, please use the following bibliography entry:
+
+```
+@inproceedings{artist,
+  title={ARTist: The Android runtime instrumentation and security toolkit},
+  author={Backes, Michael and Bugiel, Sven and Schranz, Oliver and von Styp-Rekowsky, Philipp and Weisgerber, Sebastian},
+  booktitle={2017 IEEE European Symposium on Security and Privacy (EuroS\&P)},
+  pages={481--495},
+  year={2017},
+  organization={IEEE}
+}
+```
+
+There is a follow-up paper where we utilized ARTist to cut out advertisement libraries from third-party applications, move the library to a dedicated app (own security principal) and reconnect both using a custom Binder IPC protocol, all while preserving visual fidelity by displaying the remote advertisements as floating views on top of the now ad-cleaned application. The full paper **The ART of App Compartmentalization: Compiler-based Library Privilege Separation on Stock Android**, as it was published at the 2017 ACM SIGSAC Conference on Computer and Communications Security (CCS'17), is available [here](https://artist.cispa.saarland/res/papers/CompARTist.pdf).
